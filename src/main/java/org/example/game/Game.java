@@ -12,7 +12,7 @@ public class Game {
     public static void isMatches(String enteredNumber) {
 
         forMatching = String.valueOf(NumberForGuess.getNumberForGuess());
-        if(totalTry > 0) {
+        if(totalTry > 1) {
             if (forMatching.equals(enteredNumber)) {
                 printYouWinner();
                 printPlayAgain();
