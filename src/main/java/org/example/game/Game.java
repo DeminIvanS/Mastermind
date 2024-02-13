@@ -2,24 +2,34 @@ package org.example.game;
 
 public class Game {
     private static String forMatching;
+    private static int totalTry = 10;
 
     public static void start(){
-        NumberForGuess.generatedNumber();
+                NumberForGuess.generatedNumber();
+                totalTry = 10;
     }
 
-    protected static void isMatches(String enteredNumber) {
+    public static void isMatches(String enteredNumber) {
+
         forMatching = String.valueOf(NumberForGuess.getNumberForGuess());
-        if (forMatching.equals(enteredNumber)) {
-            printYouWinner();
-            start();
-        } else {
-            if(forMatching.length() == enteredNumber.length()) {
-                int countBull = getBulls(enteredNumber);
-                int countCows = getCows(enteredNumber);
-                printCountItems(countBull,countCows);
-            }else{
-                printLengthEnough();
+        if(totalTry > 0) {
+            if (forMatching.equals(enteredNumber)) {
+                printYouWinner();
+                printPlayAgain();
+            } else {
+                if (forMatching.length() == enteredNumber.length()) {
+                    totalTry--;
+                    int countBull = getBulls(enteredNumber);
+                    int countCows = getCows(enteredNumber);
+                    printCountItems(countBull, countCows);
+                    printTotalTry();
+                } else {
+                    printLengthEnough();
+                }
             }
+        }else {
+            printYouLose();
+            printPlayAgain();
         }
     }
     private static int getBulls(String num){
@@ -50,6 +60,15 @@ public class Game {
         }
 
         return count;
+    }
+    public static void printTotalTry(){
+        System.out.println("You have " + totalTry + " tries left");
+    }
+    private static void printYouLose(){
+        System.out.println("You lose.");
+    }
+    private static void printPlayAgain(){
+        System.out.println("Shall we play again?");
     }
     private static void printYouWinner(){
         System.out.println("You Winner!");

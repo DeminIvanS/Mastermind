@@ -16,14 +16,16 @@ public class Mastermind {
         String str;
         System.out.println("Enter \"exit\" for closed application");
         System.out.println("For start new game, please enter \"new\".");
+        game.printTotalTry();
         while (true) {
             str = scanner.nextLine();
             if (str.toLowerCase().equals("exit")){
                 System.out.println("Application is closed.");
                 scanner.close();
                 System.exit(0);
-            }else if(str.toLowerCase().equals("new")){
+            }else if(str.toLowerCase().equals("new") || str.toLowerCase().equals("yes")){
                 game.start();
+                game.printTotalTry();
             }else{
                 parser.parser(str);
             }
