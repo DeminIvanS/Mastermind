@@ -42,7 +42,7 @@ public class Game {
                 numGenerated[i] = '*';
             }
         }
-        forMatching = String.copyValueOf(numGenerated);;
+        forMatching = String.copyValueOf(numGenerated);
         return count;
     }
     private static int getCows(String num){
