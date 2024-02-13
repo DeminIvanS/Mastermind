@@ -58,9 +58,9 @@ public class Game {
                 }
             }
         }
-
         return count;
     }
+
     public static void printTotalTry(){
         System.out.println("You have " + totalTry + " tries left");
     }
